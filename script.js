@@ -15,3 +15,15 @@ function multiply(num1, numb2){
     product = num1 * num2;
     return product.toFixed(7)
 }
+
+function clear(){
+    
+}
+
+function del(){
+
+}
+
+function detectOperator(input){
+
+}
