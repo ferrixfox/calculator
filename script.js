@@ -28,6 +28,8 @@ function detectOperator(input){
 
 }
 
+
+
 // const container = document.querySelector('.container');
 const display = document.querySelector('.display')
 const nums = document.querySelectorAll('.integer')
@@ -38,7 +40,11 @@ const backspace = document.querySelector('#backspace')
 for (let num of nums){
     num.addEventListener('click', () => {
         let currentText = display.textContent;
+        if (currentText.toString().length >= 36){
+        // text will spill from screen if not limited to 36
+            alert('input exceeds character limit')
+            return
+        };
         display.textContent = currentText  + num.value;
-        console.log(num.value)
     });
-}
+};
