@@ -18,12 +18,23 @@ body{
     height: 110px;
     margin: 20px 20px 10px;
     border-radius: 10px;
+    border: 1.5px black solid;
 }
 
 .inputs{
+    display: flex;
+    flex-direction: column;
     height: 100%;
     margin: 20px;
-    border-radius: 10px;
-    background-color: white;
+}
+
+.button_row{
     display: flex;
+    flex: 1 1 0;
+}
+
+.button_row > button{
+    flex: 1 1 0;
+    margin: 5px;
+    border-radius: 5px;
 }
