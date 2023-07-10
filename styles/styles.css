@@ -7,18 +7,15 @@ body{
 .container{
     display: flex;
     background-color: rgb(185, 180, 180);
-    min-width: 400px;
+    max-width: 400px;
     aspect-ratio: 1/1;
     flex-direction: column;
     border-radius: 10px;
+    flex: 1 1 0;
 }
 
 .display{
-    background-color: rgb(233, 228, 228);
-    height: 110px;
-    margin: 20px 20px 10px;
-    border-radius: 10px;
-    border: 1.5px black solid;
+    
 }
 
 .inputs{
@@ -37,4 +34,12 @@ body{
     flex: 1 1 0;
     margin: 5px;
     border-radius: 5px;
+}
+
+.display{
+    background-color: rgb(233, 228, 228);
+    border-radius: 10px;
+    border: 1.5px black solid;
+    height: 30%;
+    margin: 20px 20px 10px;
 }
