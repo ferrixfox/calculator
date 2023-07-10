@@ -28,6 +28,17 @@ function detectOperator(input){
 
 }
 
-const container = document.querySelector('.container');
+// const container = document.querySelector('.container');
 const display = document.querySelector('.display')
-const btns = document.querySelectorAll(button)
+const nums = document.querySelectorAll('.integer')
+const operators = document.querySelectorAll('.operator')
+const C = document.querySelector('#clear')
+const backspace = document.querySelector('#backspace')
+
+for (let num of nums){
+    num.addEventListener('click', () => {
+        let currentText = display.textContent;
+        display.textContent = currentText  + num.value;
+        console.log(num.value)
+    });
+}
