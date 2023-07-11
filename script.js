@@ -7,21 +7,18 @@ function subtract(num1, num2){
 }
 
 function divide(num1, num2){
+    if (num2 === 0){
+        alert("can't divide by 0!")
+        top_display.textContent = "";
+        return;
+    }
     let quotient = num1 / num2;
-    return quotient.toFixed(7);
+    top_display.textContent = quotient;
 }
 
 function multiply(num1, num2){
     product = num1 * num2;
-    return product.toFixed(7)
-}
-
-function clear(){
-    
-}
-
-function del(){
-
+    top_display.textContent = product;
 }
 
 //function inputLimit(){
@@ -37,7 +34,7 @@ function currentText(){
 
 function alreadyDecimal(input){
     if (input != ".") return;
-    let split = currentText().toString().split(/[-*+\\]/g);
+    let split = currentText().toString().split(/[-*+\/]/g);
 
     let decimalsFound = 0;
     for (item in split){
@@ -54,14 +51,14 @@ function alreadyDecimal(input){
 }
 
 function alreadyOperator(){
-    if(currentText().search(/[-*+\\]/g) != -1){
+    if(currentText().search(/[-*+\/]/g) != -1){
         return true;
     }
     return false;
 }
 
 function solveProblem(operation){
-    let findNums = currentText().toString().split(/[-*+\\]/g)
+    let findNums = currentText().toString().split(/[-*+\/]/g)
     let num1 = Number(findNums[0]);
     let num2 = Number(findNums[1]);
 
@@ -72,6 +69,12 @@ function solveProblem(operation){
     case "-":
         subtract(num1, num2);
         break;
+    case "*":
+        multiply(num1, num2);
+        break;
+    case "/":
+        divide(num1, num2)
+        break;
     }
     display.textContent = currentText()
 }
@@ -80,7 +83,6 @@ const top_display = document.querySelector('.top_display')
 const display = document.querySelector('.display')
 const nums = document.querySelectorAll('.integer')
 const operators = document.querySelectorAll('.operator')
-const backspace = document.querySelector('#backspace')
 
 let currentOperation = "";
 
@@ -103,10 +105,10 @@ for (let operator of operators){
     operator.addEventListener('click', () => {
         //if (inputLimit()) return;
         if (alreadyOperator()) solveProblem(currentOperation);
-        
+        if (currentText() === "") return;
         top_display.textContent = currentText() + " " + operator.value + " ";
         currentOperation = operator.value;
-    });
+    })
 };
 
 for (let num of nums){
