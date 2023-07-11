@@ -83,7 +83,7 @@ const top_display = document.querySelector('.top_display')
 const display = document.querySelector('.display')
 const nums = document.querySelectorAll('.integer')
 const operators = document.querySelectorAll('.operator')
-
+const btns = document.querySelectorAll('button')
 let currentOperation = "";
 
 document.querySelector('.equals').addEventListener('click', () => {
@@ -94,12 +94,20 @@ document.querySelector('.equals').addEventListener('click', () => {
 document.querySelector('#clear').addEventListener('click', () => {
     top_display.textContent = "";
     display.textContent = "";
-})
+});
 
 document.querySelector('#backspace').addEventListener('click', () => {
     let newText = currentText().slice(0, -1);
     top_display.textContent = newText;
-})
+});
+
+for (let button of btns){
+    button.addEventListener('mouseover', () => button.classList.toggle('active'))
+    button.addEventListener('mouseleave', () => button.classList.toggle('active'))
+    button.addEventListener('mousedown', () => button.classList.toggle('pressed'))
+    button.addEventListener('mouseup', () => button.classList.toggle('pressed'))
+};
+
 
 for (let operator of operators){
     operator.addEventListener('click', () => {
@@ -108,7 +116,7 @@ for (let operator of operators){
         if (currentText() === "") return;
         top_display.textContent = currentText() + " " + operator.value + " ";
         currentOperation = operator.value;
-    })
+    });
 };
 
 for (let num of nums){

@@ -62,3 +62,11 @@ body{
 .display{
     margin-bottom: 10px;
 }
+
+.active{
+    background-color: cornflowerblue;
+}
+
+.pressed{
+    background-color: rgb(37, 94, 198);
+}
