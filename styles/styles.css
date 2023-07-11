@@ -52,4 +52,5 @@ body{
     align-items: flex-end;
     margin: 16px;
     overflow-wrap: anywhere;
+    overflow: hidden;
 }

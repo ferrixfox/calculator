@@ -58,6 +58,22 @@ function alreadyDecimal(input){
     return false;
 }
 
+function alreadyOperator(){
+    if(currentText().search(/[-*+\\]/g) != -1){
+        solveProblem();
+    }
+    return false;
+}
+
+function solveProblem(){
+    let operation = findOperator()
+    // use a switch statement to call various functions to solve
+}
+
+function findOperator(){
+    // use a regex and slice(?) to parse out which operator was used
+}
+
 // const container = document.querySelector('.container');
 const display = document.querySelector('.display')
 const nums = document.querySelectorAll('.integer')
@@ -67,8 +83,7 @@ const backspace = document.querySelector('#backspace')
 
 for (let operator of operators){
     operator.addEventListener('click', () => {
-        //detectOperator()
-        if (inputLimit()) return;
+        if (inputLimit()||alreadyOperator()) return;
         display.textContent = currentText()  + operator.value;
     });
 };
