@@ -42,9 +42,7 @@ function currentText(){
 
 function alreadyDecimal(input){
     if (input != ".") return;
-    let text = currentText().toString();
-    let split = text.split(/[-*+\\]/g);
-    console.log(split)
+    let split = currentText().toString().split(/[-*+\\]/g);
 
     let decimalsFound = 0;
     for (item in split){
@@ -52,12 +50,8 @@ function alreadyDecimal(input){
         console.log(decimal)
         if (decimal != -1) decimalsFound++;
     }
-    console.log(decimalsFound)
-    if (split.length == 2 && decimalsFound == 2){
-        alert("numbers cannot contain more than one decimal")
-        return true;
-    }
-    if (split.length === 1 && decimalsFound >= 1){
+    if ((split.length == 2 && decimalsFound == 2)||
+        (split.length === 1 && decimalsFound >= 1)){
         alert("numbers cannot contain more than one decimal")
         return true;
     }
