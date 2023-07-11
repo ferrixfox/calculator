@@ -30,6 +30,7 @@ body{
     flex: 1 1 0;
     margin: 5px;
     border-radius: 5px;
+    font-size: large;
 }
 
 .screen{
@@ -64,9 +65,9 @@ body{
 }
 
 .active{
-    background-color: cornflowerblue;
+    background-color: lightblue;
 }
 
 .pressed{
-    background-color: rgb(37, 94, 198);
+    background-color: rgb(137, 206, 229);
 }
