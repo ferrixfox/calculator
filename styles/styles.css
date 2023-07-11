@@ -54,3 +54,7 @@ body{
     overflow: hidden;
     height: 50%;
 }
+
+.screen > .top_display{
+    font-size: 1.5em;
+}

@@ -1,9 +1,9 @@
 function add(num1, num2){
-    display.textContent = num1 + num2;
+    top_display.textContent = num1 + num2;
 }
 
 function subtract(num1, num2){
-    display.textContent = num1 - num2;
+    top_display.textContent = num1 - num2;
 }
 
 function divide(num1, num2){
@@ -32,7 +32,7 @@ function inputLimit(){
 }
 
 function currentText(){
-    return display.textContent;
+    return top_display.textContent;
 }
 
 function alreadyDecimal(input){
@@ -73,7 +73,7 @@ function solveProblem(operation){
         subtract(num1, num2);
         break;
     }
-    top_display.textContent = currentText()
+    display.textContent = currentText()
 }
 
 const top_display = document.querySelector('.top_display')
@@ -82,16 +82,21 @@ const nums = document.querySelectorAll('.integer')
 const operators = document.querySelectorAll('.operator')
 const C = document.querySelector('#clear')
 const backspace = document.querySelector('#backspace')
+//const solve = document.querySelector('.equals')
 
 let currentOperation = "";
+
+document.querySelector('.equals').addEventListener('click', () => {
+    solveProblem(currentOperation)
+    top_display.textContent = currentText();
+})
 
 for (let operator of operators){
     operator.addEventListener('click', () => {
         if (inputLimit()) return;
-        if (alreadyOperator()){
-            solveProblem(currentOperation)
-        }
-        display.textContent = currentText() + " " + operator.value + " ";
+        if (alreadyOperator()) solveProblem(currentOperation);
+        
+        top_display.textContent = currentText() + " " + operator.value + " ";
         currentOperation = operator.value;
     });
 };
@@ -99,6 +104,7 @@ for (let operator of operators){
 for (let num of nums){
     num.addEventListener('click', () => {
         if (inputLimit() || alreadyDecimal(num.value)) return;
-        display.textContent = currentText()  + num.value;
+        top_display.textContent = currentText()  + num.value;
     });
 };
+
