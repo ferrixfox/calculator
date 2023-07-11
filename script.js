@@ -1,9 +1,9 @@
 function add(num1, num2){
-    return num1 + num2;
+    display.textContent = num1 + num2;
 }
 
 function subtract(num1, num2){
-    return num1 - num2;
+    display.textContent = num1 - num2;
 }
 
 function divide(num1, num2){
@@ -22,11 +22,6 @@ function clear(){
 
 function del(){
 
-}
-
-function detectOperator(){
-    //if (currentText().toString.search(
-    
 }
 
 function inputLimit(){
@@ -60,31 +55,41 @@ function alreadyDecimal(input){
 
 function alreadyOperator(){
     if(currentText().search(/[-*+\\]/g) != -1){
-        solveProblem();
+        return true;
     }
     return false;
 }
 
-function solveProblem(){
-    let operation = findOperator()
-    // use a switch statement to call various functions to solve
-}
+function solveProblem(operation){
+    let findNums = currentText().toString().split(/[-*+\\]/g)
+    let num1 = Number(findNums[0]);
+    let num2 = Number(findNums[1]);
 
-function findOperator(){
-    // use a regex and slice(?) to parse out which operator was used
+    switch(operation){
+    case "+":
+        add(num1, num2);
+        break;
+    case "-":
+        subtract(num1, num2);
+        break;
+    }
 }
-
-// const container = document.querySelector('.container');
 const display = document.querySelector('.display')
 const nums = document.querySelectorAll('.integer')
 const operators = document.querySelectorAll('.operator')
 const C = document.querySelector('#clear')
 const backspace = document.querySelector('#backspace')
 
+let currentOperation = "";
+
 for (let operator of operators){
     operator.addEventListener('click', () => {
-        if (inputLimit()||alreadyOperator()) return;
-        display.textContent = currentText()  + operator.value;
+        if (inputLimit()) return;
+        if (alreadyOperator()){
+            solveProblem(currentOperation)
+        }
+        display.textContent = currentText() + " " + operator.value + " ";
+        currentOperation = operator.value;
     });
 };
 
