@@ -24,12 +24,12 @@ function del(){
 
 }
 
-function inputLimit(){
-     if (currentText().toString().length >= 15){
-        alert("you have exceeded the character limit.")
-        return true;
-    }
-}
+//function inputLimit(){
+  //   if (currentText().toString().length >= 15){
+    //    alert("you have exceeded the character limit.")
+      //  return true;
+    //}
+//}
 
 function currentText(){
     return top_display.textContent;
@@ -80,20 +80,28 @@ const top_display = document.querySelector('.top_display')
 const display = document.querySelector('.display')
 const nums = document.querySelectorAll('.integer')
 const operators = document.querySelectorAll('.operator')
-const C = document.querySelector('#clear')
 const backspace = document.querySelector('#backspace')
-//const solve = document.querySelector('.equals')
 
 let currentOperation = "";
 
 document.querySelector('.equals').addEventListener('click', () => {
     solveProblem(currentOperation)
     top_display.textContent = currentText();
+});
+
+document.querySelector('#clear').addEventListener('click', () => {
+    top_display.textContent = "";
+    display.textContent = "";
+})
+
+document.querySelector('#backspace').addEventListener('click', () => {
+    let newText = currentText().slice(0, -1);
+    top_display.textContent = newText;
 })
 
 for (let operator of operators){
     operator.addEventListener('click', () => {
-        if (inputLimit()) return;
+        //if (inputLimit()) return;
         if (alreadyOperator()) solveProblem(currentOperation);
         
         top_display.textContent = currentText() + " " + operator.value + " ";
@@ -103,7 +111,8 @@ for (let operator of operators){
 
 for (let num of nums){
     num.addEventListener('click', () => {
-        if (inputLimit() || alreadyDecimal(num.value)) return;
+        //if (inputLimit() || 
+        if (alreadyDecimal(num.value)) return;
         top_display.textContent = currentText()  + num.value;
     });
 };

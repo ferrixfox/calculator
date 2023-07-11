@@ -57,4 +57,5 @@ body{
 
 .screen > .top_display{
     font-size: 1.5em;
+    align-items: start;
 }
