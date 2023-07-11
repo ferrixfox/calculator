@@ -25,7 +25,7 @@ function del(){
 }
 
 function inputLimit(){
-     if (currentText().toString().length >= 36){
+     if (currentText().toString().length >= 15){
         alert("you have exceeded the character limit.")
         return true;
     }
@@ -73,7 +73,10 @@ function solveProblem(operation){
         subtract(num1, num2);
         break;
     }
+    top_display.textContent = currentText()
 }
+
+const top_display = document.querySelector('.top_display')
 const display = document.querySelector('.display')
 const nums = document.querySelectorAll('.integer')
 const operators = document.querySelectorAll('.operator')
