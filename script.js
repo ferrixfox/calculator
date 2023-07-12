@@ -43,11 +43,10 @@ function alreadyDecimal(input){
     return false;
 }
 
-function alreadyOperator(){
+function alreadyOperator(attemptedOperation){
     let string = currentText().toString();
 
     if (string.length === 0) return false;
-    
     if (string[0] === "-"){
         let subString = string.slice(1,);
         if (subString.search(/[-*+\/]/g) != -1){
@@ -55,6 +54,9 @@ function alreadyOperator(){
         }
         return false;
     }
+    if((currentOperation === "*" || currentOperation === "/")
+        && attemptedOperation === "-") return false; 
+    
     if(currentText().search(/[-*+\/]/g) != -1){
         return true;
     }
@@ -111,21 +113,21 @@ document.querySelector('#backspace').addEventListener('click', () => {
 });
 
 for (let button of btns){
-    button.addEventListener('mouseover', () => button.classList.toggle('active'))
-    button.addEventListener('mouseleave', () => button.classList.toggle('active'))
-    button.addEventListener('mousedown', () => button.classList.toggle('pressed'))
-    button.addEventListener('mouseup', () => button.classList.toggle('pressed'))
+    //button.addEventListener('mouseover', () => button.classList.toggle('active'))
+    //button.addEventListener('mouseleave', () => button.classList.toggle('active'))
+    //button.addEventListener('mousedown', () => button.classList.toggle('pressed'))
+    //button.addEventListener('mouseup', () => button.classList.toggle('pressed'))
 };
 
 
 for (let operator of operators){
     operator.addEventListener('click', () => {
-        if (alreadyOperator()) solveProblem(currentOperation);
+        if (alreadyOperator(operator.value)) solveProblem(currentOperation);
         if (currentText() === "" && operator.value != "-") return;
-        if (currentText() === "" && operator.value === "-"){
+        if ((currentOperation === "*" || "/") && operator.value === "-"){
             top_display.textContent = currentText() + operator.value;
             return;
-        }
+        } 
         top_display.textContent = currentText() + " " + operator.value + " ";
         currentOperation = operator.value;
     });
