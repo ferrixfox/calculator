@@ -21,13 +21,6 @@ function multiply(num1, num2){
     top_display.textContent = product;
 }
 
-//function inputLimit(){
-  //   if (currentText().toString().length >= 15){
-    //    alert("you have exceeded the character limit.")
-      //  return true;
-    //}
-//}
-
 function currentText(){
     return top_display.textContent;
 }
@@ -51,6 +44,15 @@ function alreadyDecimal(input){
 }
 
 function alreadyOperator(){
+    let string = currentText().toString()
+    if (string.length === 0) return false;
+    if (string[0] === "-"){
+        let subString = string.slice(1,);
+        if (subString.search(/[-*+\/]/g) != -1){
+            return true;   
+        }
+        return false;
+    }
     if(currentText().search(/[-*+\/]/g) != -1){
         return true;
     }
@@ -58,9 +60,9 @@ function alreadyOperator(){
 }
 
 function solveProblem(operation){
-    let findNums = currentText().toString().split(/[-*+\/]/g)
+    let findNums = currentText().toString().split(" ")
     let num1 = Number(findNums[0]);
-    let num2 = Number(findNums[1]);
+    let num2 = Number(findNums[2]);
 
     switch(operation){
     case "+":
@@ -102,18 +104,21 @@ document.querySelector('#backspace').addEventListener('click', () => {
 });
 
 for (let button of btns){
-    button.addEventListener('mouseover', () => button.classList.toggle('active'))
-    button.addEventListener('mouseleave', () => button.classList.toggle('active'))
-    button.addEventListener('mousedown', () => button.classList.toggle('pressed'))
-    button.addEventListener('mouseup', () => button.classList.toggle('pressed'))
+    //button.addEventListener('mouseover', () => button.classList.toggle('active'))
+    //button.addEventListener('mouseleave', () => button.classList.toggle('active'))
+    //button.addEventListener('mousedown', () => button.classList.toggle('pressed'))
+    //button.addEventListener('mouseup', () => button.classList.toggle('pressed'))
 };
 
 
 for (let operator of operators){
     operator.addEventListener('click', () => {
-        //if (inputLimit()) return;
         if (alreadyOperator()) solveProblem(currentOperation);
-        if (currentText() === "") return;
+        if (currentText() === "" && operator.value != "-") return;
+        if (currentText() === "" && operator.value === "-"){
+            top_display.textContent = currentText() + operator.value;
+            return;
+        }
         top_display.textContent = currentText() + " " + operator.value + " ";
         currentOperation = operator.value;
     });
@@ -121,7 +126,6 @@ for (let operator of operators){
 
 for (let num of nums){
     num.addEventListener('click', () => {
-        //if (inputLimit() || 
         if (alreadyDecimal(num.value)) return;
         top_display.textContent = currentText()  + num.value;
     });
