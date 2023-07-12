@@ -44,8 +44,10 @@ function alreadyDecimal(input){
 }
 
 function alreadyOperator(){
-    let string = currentText().toString()
+    let string = currentText().toString();
+
     if (string.length === 0) return false;
+    
     if (string[0] === "-"){
         let subString = string.slice(1,);
         if (subString.search(/[-*+\/]/g) != -1){
@@ -104,10 +106,10 @@ document.querySelector('#backspace').addEventListener('click', () => {
 });
 
 for (let button of btns){
-    //button.addEventListener('mouseover', () => button.classList.toggle('active'))
-    //button.addEventListener('mouseleave', () => button.classList.toggle('active'))
-    //button.addEventListener('mousedown', () => button.classList.toggle('pressed'))
-    //button.addEventListener('mouseup', () => button.classList.toggle('pressed'))
+    button.addEventListener('mouseover', () => button.classList.toggle('active'))
+    button.addEventListener('mouseleave', () => button.classList.toggle('active'))
+    button.addEventListener('mousedown', () => button.classList.toggle('pressed'))
+    button.addEventListener('mouseup', () => button.classList.toggle('pressed'))
 };
 
 
