@@ -101,7 +101,12 @@ document.querySelector('#clear').addEventListener('click', () => {
 });
 
 document.querySelector('#backspace').addEventListener('click', () => {
-    let newText = currentText().slice(0, -1);
+    let newText = currentText();
+    index = newText.length - 1
+    if (newText[index] === " "){
+        newText = newText.slice(0, -3)
+    }
+    else newText = newText.slice(0, -1);
     top_display.textContent = newText;
 });
 
