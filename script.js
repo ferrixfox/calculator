@@ -14,7 +14,7 @@ function divide(num1, num2){
     }
     let quotient = num1 / num2;
     top_display.textContent = quotient;
-}
+ }
 
 function multiply(num1, num2){
     product = num1 * num2;
