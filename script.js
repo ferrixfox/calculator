@@ -101,6 +101,7 @@ document.querySelector('.equals').addEventListener('click', () => {
 document.addEventListener('keypress', (event) => {
     if (event.key === 'Enter'){
         event.preventDefault();
+        solveProblem(currentOperation)
     };
 });
 
