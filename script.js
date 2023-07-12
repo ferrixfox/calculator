@@ -121,10 +121,10 @@ document.querySelector('#backspace').addEventListener('click', () => {
 });
 
 for (let button of btns){
-    //button.addEventListener('mouseover', () => button.classList.toggle('active'))
-    //button.addEventListener('mouseleave', () => button.classList.toggle('active'))
-    //button.addEventListener('mousedown', () => button.classList.toggle('pressed'))
-    //button.addEventListener('mouseup', () => button.classList.toggle('pressed'))
+    button.addEventListener('mouseover', () => button.classList.toggle('active'))
+    button.addEventListener('mouseleave', () => button.classList.toggle('active'))
+    button.addEventListener('mousedown', () => button.classList.toggle('pressed'))
+    button.addEventListener('mouseup', () => button.classList.toggle('pressed'))
 };
 
 
