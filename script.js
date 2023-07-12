@@ -95,6 +95,13 @@ let currentOperation = "";
 document.querySelector('.equals').addEventListener('click', () => {
     solveProblem(currentOperation)
     top_display.textContent = currentText();
+
+});
+
+document.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter'){
+        event.preventDefault();
+    };
 });
 
 document.querySelector('#clear').addEventListener('click', () => {
